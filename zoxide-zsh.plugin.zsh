@@ -1,11 +1,9 @@
 #!/usr/bin/env zsh
 
-# Exit if the 'zoxide' command can not be found
-if ! (( $+commands[zoxide] )); then
-    echo "WARNING: 'zoxide' command not found"
-    return
-fi
-
 # Eval the zoxide init script with my configuration
-eval "$(zoxide init --cmd cd zsh)"
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init --cmd cd zsh)"
+else
+  echo 'zoxide: command not found, please install it from https://github.com/ajeetdsouza/zoxide'
+fi
 
